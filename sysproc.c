@@ -89,3 +89,10 @@ sys_uptime(void)
   release(&tickslock);
   return xticks;
 }
+
+extern int read_count ; // extern to access the global read_count variable
+int
+sys_readcount(void) //return the number of read calls
+{
+  return read_count;
+}

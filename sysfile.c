@@ -66,6 +66,7 @@ sys_dup(void)
   return fd;
 }
 
+int read_count = 0; //global counter for kernel
 int
 sys_read(void)
 {
@@ -75,6 +76,7 @@ sys_read(void)
 
   if(argfd(0, 0, &f) < 0 || argint(2, &n) < 0 || argptr(1, &p, n) < 0)
     return -1;
+  read_count++;
   return fileread(f, p, n);
 }
 
@@ -442,3 +444,5 @@ sys_pipe(void)
   fd[1] = fd1;
   return 0;
 }
+
+
