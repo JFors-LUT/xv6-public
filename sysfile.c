@@ -81,6 +81,23 @@ sys_read(void)
 }
 
 int
+sys_readcount(void) //return the number of read calls
+{
+  int reset;
+  int previous_read_count;
+  if (argint(0, &reset) < 0) // get the system argument from user
+    return -1;
+
+  if (reset == 1) {// if reset is 1, reset the read_count
+    previous_read_count = read_count; // store the previous read count 
+    read_count = 0;
+    return previous_read_count;
+     }
+  return read_count;
+ 
+}
+
+int
 sys_write(void)
 {
   struct file *f;

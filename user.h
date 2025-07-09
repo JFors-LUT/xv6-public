@@ -23,7 +23,7 @@ int getpid(void);
 char* sbrk(int);
 int sleep(int);
 int uptime(void);
-int readcount(void);
+int readcount(int reset); // return the number of read calls, takes an argument as integer
 
 
 // ulib.c
